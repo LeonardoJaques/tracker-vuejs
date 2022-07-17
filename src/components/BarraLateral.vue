@@ -35,9 +35,9 @@ export default defineComponent({
   computed: {
     textoBotao() {
       if (this.modoEscuroAtivo) {
-        return "DarkMode";
+        return "LightMode";
       }
-      return "LigthMode";
+      return "DarkMode";
     },
   },
   data() {
