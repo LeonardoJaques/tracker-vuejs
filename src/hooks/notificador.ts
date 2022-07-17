@@ -1,0 +1,24 @@
+import { TipoNotificaco } from "@/interfaces/INotificacao";
+import { store } from "@/store";
+import { NOTIFICAR } from "@/store/tipo-mutacoes";
+
+type Notificador = {
+  notificar: (tipo: TipoNotificaco, titulo: string, texto: string) => void;
+};
+
+export default (): Notificador => {
+  const notificar = (
+    tipo: TipoNotificaco,
+    titulo: string,
+    texto: string
+  ): void => {
+    store.commit(NOTIFICAR, {
+      titulo,
+      texto,
+      tipo,
+    });
+  };
+  return {
+    notificar,
+  };
+};
