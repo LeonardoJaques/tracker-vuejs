@@ -1,13 +1,13 @@
 <template>
   <FormularioApp @aoSalvarTarefa="salvarTarefa" />
-    <div class="lista">
-      <Box v-if="listaEstaVazia"> Você não esta muito produtivo hoje :( </Box>
-      <TarefaApp
-        v-for="(tarefa, index) in tarefas"
-        :key="index"
-        :tarefa="tarefa"
-      />
-    </div>
+  <div class="lista">
+    <Box v-if="listaEstaVazia"> Você não esta muito produtivo hoje :( </Box>
+    <TarefaApp
+      v-for="(tarefa, index) in tarefas"
+      :key="index"
+      :tarefa="tarefa"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,11 +25,6 @@ export default defineComponent({
     return {
       tarefas: [] as ITarefa[],
     };
-  },
-  computed: {
-    listaEstaVazia(): boolean {
-      return this.tarefas.length === 0;
-    },
   },
   methods: {
     salvarTarefa(tarefa: ITarefa) {
