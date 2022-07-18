@@ -1,24 +1,28 @@
 import http from "@/http";
 import { INotificacoes } from "@/interfaces/INotificacao";
 import IProjeto from "@/interfaces/IProjeto";
+import ITarefa from "@/interfaces/ITarefas";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import {
   ALTERAR_PROJETO,
   CADASTRAR_PROJETO,
   OBTER_PROJETOS,
+  OBTER_TAREFAS,
   REMOVER_PROJETO,
 } from "./tipo-acoes";
 import {
   ADICIONA_PROJETO,
   ALTERA_PROJETO,
   DEFINIR_PROJETOS,
+  DEFINIR_TAREFAS,
   EXCLUIR_PROJETO,
   NOTIFICAR,
 } from "./tipo-mutacoes";
 
 interface Estado {
   projetos: IProjeto[];
+  tarefas: ITarefa[];
   notificacoes: INotificacoes[];
 }
 
@@ -28,6 +32,7 @@ export const store = createStore<Estado>({
   state: {
     projetos: [],
     notificacoes: [],
+    tarefas: [],
   },
   mutations: {
     [ADICIONA_PROJETO](state, nomeDoProjeto: string) {
@@ -56,12 +61,15 @@ export const store = createStore<Estado>({
         );
       }, 3000);
     },
+    [DEFINIR_TAREFAS](state, tarefas: ITarefa[]) {
+      state.tarefas = tarefas;
+    },
   },
   actions: {
     [OBTER_PROJETOS]({ commit }) {
       http
         .get("projetos")
-        .then((resposta) => commit(DEFINIR_PROJETOS, resposta.data));
+        .then((response) => commit(DEFINIR_PROJETOS, response.data));
     },
     [CADASTRAR_PROJETO](contexto, nomeDoProjeto: string) {
       return http.post("/projetos", {
@@ -75,6 +83,11 @@ export const store = createStore<Estado>({
       return http
         .delete(`/projetos/${id}`)
         .then(() => commit(EXCLUIR_PROJETO, id));
+    },
+    [OBTER_TAREFAS]({ commit }) {
+      http
+        .get("tarefas")
+        .then((response) => commit(DEFINIR_TAREFAS, response.data));
     },
   },
 });

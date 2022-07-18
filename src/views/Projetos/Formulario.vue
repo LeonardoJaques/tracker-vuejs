@@ -88,3 +88,8 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.label {
+  color: #806a12;
+}
+</style>
