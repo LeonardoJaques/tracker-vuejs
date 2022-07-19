@@ -8,7 +8,7 @@
   "tarefas": [
     {
       "duracaoEmSegundos": 3,
-      "descricao": "Teste",
+      "descricao": "Testes",
       "projeto": {
         "nome": "Plano de Estudos Vue",
         "id": 1

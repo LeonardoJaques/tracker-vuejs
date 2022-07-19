@@ -6,6 +6,7 @@ import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import {
   ALTERAR_PROJETO,
+  ALTERAR_TAREFA,
   CADASTRAR_PROJETO,
   CADASTRAR_TAREFA,
   OBTER_PROJETOS,
@@ -16,6 +17,7 @@ import {
   ADICIONA_PROJETO,
   ADICIONA_TAREFAS,
   ALTERA_PROJETO,
+  ALTERA_TAREFA,
   DEFINIR_PROJETOS,
   DEFINIR_TAREFAS,
   EXCLUIR_PROJETO,
@@ -69,6 +71,10 @@ export const store = createStore<Estado>({
     [ADICIONA_TAREFAS](state, tarefa: ITarefa) {
       state.tarefas.push(tarefa);
     },
+    [ALTERA_TAREFA](state, tarefa: ITarefa) {
+      const index = state.tarefas.findIndex((tarf) => tarf.id === tarefa.id);
+      state.tarefas[index] = tarefa;
+    },
   },
   actions: {
     [OBTER_PROJETOS]({ commit }) {
@@ -98,6 +104,11 @@ export const store = createStore<Estado>({
       return http
         .post("/tarefas", tarefa)
         .then((resposta) => commit(ADICIONA_TAREFAS, resposta.data));
+    },
+    [ALTERAR_TAREFA]({ commit }, tarefa: ITarefa) {
+      return http
+        .put(`/tarefas/${tarefa.id}`, tarefa)
+        .then(() => commit(ALTERA_TAREFA, tarefa));
     },
   },
 });
