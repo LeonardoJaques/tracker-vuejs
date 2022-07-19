@@ -7,12 +7,14 @@ import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import {
   ALTERAR_PROJETO,
   CADASTRAR_PROJETO,
+  CADASTRAR_TAREFA,
   OBTER_PROJETOS,
   OBTER_TAREFAS,
   REMOVER_PROJETO,
 } from "./tipo-acoes";
 import {
   ADICIONA_PROJETO,
+  ADICIONA_TAREFAS,
   ALTERA_PROJETO,
   DEFINIR_PROJETOS,
   DEFINIR_TAREFAS,
@@ -64,6 +66,9 @@ export const store = createStore<Estado>({
     [DEFINIR_TAREFAS](state, tarefas: ITarefa[]) {
       state.tarefas = tarefas;
     },
+    [ADICIONA_TAREFAS](state, tarefa: ITarefa) {
+      state.tarefas.push(tarefa);
+    },
   },
   actions: {
     [OBTER_PROJETOS]({ commit }) {
@@ -88,6 +93,11 @@ export const store = createStore<Estado>({
       http
         .get("tarefas")
         .then((response) => commit(DEFINIR_TAREFAS, response.data));
+    },
+    [CADASTRAR_TAREFA]({ commit }, tarefa: ITarefa) {
+      return http
+        .post("/tarefas", tarefa)
+        .then((resposta) => commit(ADICIONA_TAREFAS, resposta.data));
     },
   },
 });

@@ -1,23 +1,19 @@
 {
   "projetos": [
     {
-      "id": 1,
-      "nome": "Projeto Tracker 3.0"
-    },
-    {
       "nome": "Plano de Estudos Vue",
-      "id": 2
+      "id": 1
     }
   ],
   "tarefas": [
     {
-      "id": 1,
-      "duracaoEmSegundos": 120,
-      "descricao": "Configuração do ambiente",
+      "duracaoEmSegundos": 3,
+      "descricao": "Teste",
       "projeto": {
-        "id": 1,
-        "nome": "Projeto Tracker 3.0"
-      }
+        "nome": "Plano de Estudos Vue",
+        "id": 1
+      },
+      "id": 1
     }
   ]
 }
