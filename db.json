@@ -45,6 +45,20 @@
         "id": 2
       },
       "id": 4
+    },
+    {
+      "duracaoEmSegundos": 4,
+      "descricao": "Teste-3",
+      "projeto": {
+        "id": 3,
+        "nome": "Plano de Estudo A"
+      },
+      "id": 5
+    },
+    {
+      "duracaoEmSegundos": 2,
+      "descricao": "",
+      "id": 6
     }
   ]
 }
