@@ -1,11 +1,9 @@
 import { INotificacoes } from "@/interfaces/INotificacao";
+import { NOTIFICAR } from "./tipo-mutacoes";
 import { EstadoDoProjeto, projeto } from "./modulos/projeto";
+import { EstadoDaTarefa, tarefa } from "./modulos/tarefa";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
-import {
-  NOTIFICAR,
-} from "./tipo-mutacoes";
-import { EstadoDaTarefa, tarefa } from "./modulos/tarefa";
 
 export interface Estado {
   notificacoes: INotificacoes[];
@@ -36,7 +34,6 @@ export const store = createStore<Estado>({
       }, 3000);
     },
   },
-
   modules: {
     projeto,
     tarefa,
