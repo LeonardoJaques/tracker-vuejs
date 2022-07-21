@@ -3,6 +3,10 @@
     {
       "nome": "Plano de Estudos Vue",
       "id": 1
+    },
+    {
+      "nome": "Plano de Estudos",
+      "id": 2
     }
   ],
   "tarefas": [
@@ -14,6 +18,29 @@
         "id": 1
       },
       "id": 1
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "",
+      "id": 2
+    },
+    {
+      "duracaoEmSegundos": 4,
+      "descricao": "Teste-1",
+      "projeto": {
+        "nome": "Plano de Estudos Vue",
+        "id": 1
+      },
+      "id": 3
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "Teste-2",
+      "projeto": {
+        "nome": "Plano de Estudos",
+        "id": 2
+      },
+      "id": 4
     }
   ]
 }
